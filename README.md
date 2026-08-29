@@ -16,7 +16,7 @@ Race your horses, join tournaments, and experience Mongolian horse racing.
 - 👤 Player accounts
 - 💎 Coin and diamond system
 - 💬 Community features
-- 🌍 Multiplayer features (planned)
+- 🌍 Multiplayer features 
 
 ---
 
@@ -27,9 +27,6 @@ Race your horses, join tournaments, and experience Mongolian horse racing.
 
 ### Windows
 ✅ Available
-
-### iOS
-🚧 Coming soon
 
 ---
 
@@ -44,7 +41,7 @@ Race your horses, join tournaments, and experience Mongolian horse racing.
 
 ### Windows
 
-- Windows 10 or newer
+- Windows 7 or newer
 - Intel Core i3 or equivalent
 - 4GB RAM
 - Intel HD Graphics or better
@@ -55,16 +52,7 @@ Race your horses, join tournaments, and experience Mongolian horse racing.
 
 Get the latest version from GitHub Releases:
 
-[Download Mongol Huleg](https://github.com/Andarstudio/Mglhuleg/releases/latest)
-
----
-
-## 🎬 Screenshots & Trailer
-
-Check the `Screenshots` folder for:
-- Gameplay screenshots
-- Game logo
-- Trailer
+[Download Mongol Huleg](https://github.com/Andarstudio/MH/releases/latest)
 
 ---
 
@@ -95,7 +83,7 @@ https://andarstudio.github.io/AndarStudio/
 
 ## 📄 Privacy Policy
 
-[View Privacy Policy](PP.txt)
+[View Privacy Policy](pp.html)
 
 ---
 
