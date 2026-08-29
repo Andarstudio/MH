@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Andar Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b0d10;
+            --bg-card: #13171d;
+            --bg-nav: rgba(11, 13, 16, 0.9);
+            --accent: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: #9da3ae;
+            --border: #21262d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-nav);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 32px;
+            width: 32px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .logo-container span {
+            color: var(--accent);
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        main {
+            padding: 140px 5% 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .last-updated {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        .content-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .content-box h2 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin: 25px 0 10px;
+        }
+
+        .content-box h2:first-child {
+            margin-top: 0;
+        }
+
+        .content-box p, .content-box ul {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .content-box ul {
+            padding-left: 20px;
+        }
+
+        .content-box a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 5%;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo-container">
+            <img src="logo.png" alt="Andar Logo" onerror="this.style.display='none'">
+            Andar <span>Studio</span>
+        </a>
+        <a href="index.html" class="back-link">&larr; Back to Home</a>
+    </nav>
+
+    <main>
+        <h1>Terms of Service</h1>
+        <div class="last-updated">Last updated: August 2026</div>
+
+        <div class="content-box">
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing or downloading games and products created by <strong>Andar Studio</strong>, you agree to be bound by these Terms of Service.</p>
+
+            <h2>2. License & Ownership</h2>
+            <p>All content, source code, game assets, logos, and trademarks related to Andar Studio (including <em>Mongol Huleg</em>) are owned by Andar Studio and protected by intellectual property laws. Users may not redistribute or modify our software without explicit permission.</p>
+
+            <h2>3. User Conduct</h2>
+            <p>When using our games or participating in community channels (such as our Discord server), you agree not to engage in cheating, exploiting software bugs, or harassing other community members.</p>
+
+            <h2>4. Limitation of Liability</h2>
+            <p>Andar Studio provides software on an "AS IS" basis. We are not liable for any technical failures, data losses, or disruptions caused while using our products.</p>
+
+            <h2>5. Contact Information</h2>
+            <p>For inquiries regarding these Terms, please contact us at <a href="mailto:erdenemandakhamartuvshin@outlook.com">erdenemandakhamartuvshin@outlook.com</a>.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Andar Studio. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE java>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andar Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b0d10;
+            --bg-card: #13171d;
+            --bg-nav: rgba(11, 13, 16, 0.9);
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-primary: #ffffff;
+            --text-secondary: #9da3ae;
+            --border: #21262d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-nav);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            height: 32px;
+            width: 32px;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .logo-container span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .hero {
+            padding: 200px 5% 120px;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            background: linear-gradient(rgba(11, 13, 16, 0.75), rgba(11, 13, 16, 0.95)), url('logo.png') center/cover no-repeat;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            padding: 60px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-align: center;
+            padding: 10px 18px;
+            background-color: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .developer-bio {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .developer-bio h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .developer-bio p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+
+        .contact-item strong {
+            color: var(--text-primary);
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 5%;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.3rem; }
+            .nav-links { gap: 15px; }
+            .contact-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo-container">
+            <img src="logo.png" alt="Andar Logo" onerror="this.style.display='none'">
+            Andar <span>Studio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#games">Games</a></li>
+            <li><a href="#developers">Developers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Andar Studio</h1>
+        <p>We create games</p>
+    </header>
+
+    <main>
+        <section id="games">
+            <h2 class="section-title">Games</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>Mongol Huleg</h3>
+                        <p>The Mongolian culture horse style game.</p>
+                    </div>
+                    <a href="https://github.com/Andarstudio/MH/releases" target="_blank" class="btn">Download</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="developers">
+            <h2 class="section-title">Developers</h2>
+            <div class="developer-bio">
+                <h3>Amartuvshin</h3>
+                <p>Founder and lead developer of Andar Studio, specializing in Unity game development, immersive interactive mechanics, and cross-platform applications.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">Contact us with:</p>
+            <div class="contact-list">
+                <div class="contact-item">
+                    <span>Email</span>
+                    <a href="mailto:erdenemandakhamartuvshin@outlook.com">erdenemandakhamartuvshin@outlook.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>Discord</span>
+                    <a href="https://discord.gg/yNSB5EYDV" target="_blank">Join Discord Invite</a>
+                </div>
+                <div class="contact-item">
+                    <span>Messenger</span>
+                    <a href="https://m.me/Amartuvsin0" target="_blank">Chat on Messenger</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="pp.html">Privacy Policy</a>
+            <span>&bull;</span>
+            <a href="tos.html">Terms of Service</a>
+        </div>
+        <p>&copy; 2026 Andar Studio. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
