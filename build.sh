@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 echo "=== Car Racing J2ME Build ==="
@@ -7,44 +6,38 @@ echo "=== Car Racing J2ME Build ==="
 rm -rf build
 mkdir -p build/classes
 
-# Copy the J2ME libraries from the template
-mkdir -p sdk/lib
+# The devkit provides the pinned CLDC/MIDP APIs and ProGuard.
+cd j2me-devkit
 
-find j2me -name "cldcapi10.jar" -exec cp {} sdk/lib/cldcapi10.jar \; -quit
-find j2me -name "midpapi20.jar" -exec cp {} sdk/lib/midpapi20.jar \; -quit
+make setup
 
-if [ ! -f sdk/lib/cldcapi10.jar ]; then
-    echo "ERROR: cldcapi10.jar not found"
+cd ..
+
+echo "Compiling Car Racing..."
+
+# Use the devkit's build environment.
+cp -r src j2me-devkit/src/car-racing
+
+cp manifest.mf j2me-devkit/app.jad
+
+cd j2me-devkit
+
+make build
+
+cd ..
+
+mkdir -p build
+
+# Find the generated JAR.
+JAR=$(find j2me-devkit -type f -name "*.jar" | head -n 1)
+
+if [ -z "$JAR" ]; then
+    echo "ERROR: No JAR was produced."
     exit 1
 fi
 
-if [ ! -f sdk/lib/midpapi20.jar ]; then
-    echo "ERROR: midpapi20.jar not found"
-    exit 1
-fi
+cp "$JAR" build/CarRacing.jar
 
-echo "J2ME libraries found."
-
-echo "Compiling source..."
-
-javac \
-  -source 1.3 \
-  -target 1.1 \
-  -bootclasspath "sdk/lib/cldcapi10.jar:sdk/lib/midpapi20.jar" \
-  -d build/classes \
-  src/CarRacing.java \
-  src/GameCanvas.java \
-  src/PlayerCar.java \
-  src/TrafficCar.java \
-  src/GameManager.java
-
-echo "Creating JAR..."
-
-jar cfm build/CarRacing.jar manifest.mf \
-  -C build/classes .
-
-echo "================================"
-echo "BUILD COMPLETE"
-echo "================================"
-
+echo ""
+echo "=== BUILD SUCCESSFUL ==="
 ls -lh build/CarRacing.jar
