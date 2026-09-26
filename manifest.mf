@@ -1,0 +1,6 @@
+MIDlet-Name: Car Racing
+MIDlet-Version: 1.0
+MIDlet-Vendor: Andar Studio
+MIDlet-1: Car Racing,,CarRacing
+MicroEdition-Profile: MIDP-2.0
+MicroEdition-Configuration: CLDC-1.0
