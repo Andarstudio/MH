@@ -12,17 +12,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Java 8
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '8'
-
-      - name: Get J2ME template
+      - name: Get J2ME toolchain
         run: |
-          git clone --depth 1 https://github.com/gtrxAC/j2me-template.git j2me
+          git clone --depth 1 https://github.com/retro-systems-lab/j2me-devkit.git j2me-devkit
 
-      - name: Build
+      - name: Build Car Racing
         run: |
           chmod +x build.sh
           ./build.sh
