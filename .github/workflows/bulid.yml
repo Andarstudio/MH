@@ -1,0 +1,95 @@
+name: Build Car Racing
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "8"
+
+      - name: Download J2ME API libraries
+        run: |
+          mkdir -p lib
+
+          curl -L \
+            https://raw.githubusercontent.com/gtrxAC/j2me-template/main/sdk/cldcapi10.jar \
+            -o lib/cldcapi10.jar
+
+          curl -L \
+            https://raw.githubusercontent.com/gtrxAC/j2me-template/main/sdk/midpapi20.jar \
+            -o lib/midpapi20.jar
+
+      - name: Download ProGuard
+        run: |
+          curl -L \
+            https://github.com/Guardsquare/proguard/releases/download/v7.6.1/proguard-7.6.1.zip \
+            -o proguard.zip
+
+          unzip -q proguard.zip
+          mv proguard-7.6.1 proguard
+
+      - name: Compile Java sources
+        run: |
+          mkdir -p build/classes
+
+          javac \
+            -source 1.3 \
+            -target 1.1 \
+            -classpath "lib/cldcapi10.jar:lib/midpapi20.jar" \
+            -d build/classes \
+            src/*.java
+
+      - name: Create JAR
+        run: |
+          mkdir -p build
+
+          jar cfm build/CarRacing.jar manifest.mf \
+            -C build/classes .
+
+      - name: Preverify with ProGuard
+        run: |
+          mkdir -p output
+
+          java -jar proguard/lib/proguard.jar \
+            -injars build/CarRacing.jar \
+            -outjars output/CarRacing.jar \
+            -libraryjars lib/cldcapi10.jar \
+            -libraryjars lib/midpapi20.jar \
+            -dontoptimize \
+            -dontobfuscate \
+            -dontwarn \
+            -keep public class * extends javax.microedition.midlet.MIDlet {
+                public protected *;
+            }
+
+      - name: Create JAD
+        run: |
+          SIZE=$(stat -c%s output/CarRacing.jar)
+
+          cat > output/CarRacing.jad <<EOF
+          MIDlet-Name: Car Racing
+          MIDlet-Version: 1.0
+          MIDlet-Vendor: Andar Studio
+          MIDlet-1: Car Racing,,CarRacing
+          MIDlet-Jar-Size: $SIZE
+          MIDlet-Jar-URL: CarRacing.jar
+          MicroEdition-Profile: MIDP-2.0
+          MicroEdition-Configuration: CLDC-1.0
+          EOF
+
+      - name: Upload JAR and JAD
+        uses: actions/upload-artifact@v4
+        with:
+          name: CarRacing
+          path: output/
